@@ -1,3 +1,4 @@
+import csv
 import os
 
 
@@ -10,9 +11,29 @@ def read_data(file_name):
     """
     cwd_path = os.getcwd()
     file_path = os.path.join(cwd_path, file_name)
+    with open(file_path, mode="r") as csv_file:
+        reader = csv.DictReader(csv_file)
+        data = {}
+        for row in reader:
+            for key, value in row.items():
+                if not key in data:
+                    data[key] = []
+                data[key].append(int(value))
+    return data
 
+
+def selection_sort(delka):
+# delka je delka seznamu ktery radime
+    for i in range(len(delka) - 1):
+        min_idx = i
+        for j in range(i+1, len(delka)-1):
+            if delka[j] < delka[min_idx]:
+
+    pass
 
 def main():
+    read_data("numbers.csv")
+    print(data)
     pass
 
 
